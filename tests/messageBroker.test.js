@@ -5,17 +5,17 @@ describe("messageBroker tests", () => {
     let mockFn = jest.fn((a => 2 * a));
     messageBroker.subscribe("test", mockFn);
 
-    test("publish a message, execute mock function and test number of calls", () => {
+    test("publish a message and test number of mock function calls", () => {
         messageBroker.publish("test", 3);
         expect(mockFn.mock.calls).toHaveLength(1);
     });
 
-    test("publish a message, execute mock function and test argument", () => {
+    test("publish a message and test first argument of that mock function call", () => {
         messageBroker.publish("test", 2);
         expect(mockFn.mock.calls[1][0]).toBe(2);
     });
 
-    test("publish a message, execute mock function and test return value", () => {
+    test("publish a message and test return value of that mock function call", () => {
         messageBroker.publish("test", 2);
         expect(mockFn.mock.results[2].value).toBe(4);
     });
