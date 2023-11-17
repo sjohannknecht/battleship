@@ -1,7 +1,6 @@
-import messageBroker from "../src/messageBroker";
+import messageBroker from "../src/message-broker";
 
 describe("messageBroker tests", () => {
-
     let mockFn = jest.fn((a => 2 * a));
     messageBroker.subscribe("test", mockFn);
 
