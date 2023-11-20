@@ -1,6 +1,6 @@
 import shipFactory from "../src/ship-factory";
 
-describe("ship factory tests", () => {
+describe("ship tests", () => {
     test("ship has correct length of 3", () => {
         const ship = shipFactory(3);
         expect(ship.length).toBe(3);
