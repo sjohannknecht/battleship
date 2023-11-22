@@ -26,7 +26,17 @@ describe("gameboard tests", () => {
     test("Test if ship is in fact placed in correct location", () => {
         gameboard.placeShip({x: 0, y: 0}, 2, "horizontal");
         expect(gameboard.board[0][0] !== "miss" && gameboard.board[0][0] !== undefined).toBe(true)
-    })
+    });
+
+    test("A ship can't be placed on top of another", () => {
+        gameboard.placeShip({x: 0, y: 0}, 2, "horizontal");
+        expect(() => gameboard.placeShip({x: 0, y: 0}, 2, "horizontal")).toThrow();
+    });
+
+    test("A ship can't be placed if it would intersect with another ship", () => {
+        gameboard.placeShip({x: 0, y: 2}, 2, "horizontal");
+        expect(() => gameboard.placeShip({x: 0, y: 0}, 3, "vertical")).toThrow();
+    });
 
     test("After hitting a ship of length 2 once, not all ships are sunk.", () => {
         gameboard.placeShip({x: 0, y: 0}, 2, "horizontal");
@@ -43,5 +53,10 @@ describe("gameboard tests", () => {
 
     test("Receiving an attack outside ouf bounds of array trows error.", () => {
         expect(() => gameboard.receiveAttack({x: -1, y: 4})).toThrow();
+    })
+
+    test("Using the random method results in 5 ships being present on the board.", () => {
+        gameboard.random();
+        expect(gameboard.ships.length).toBe(5);
     })
 })

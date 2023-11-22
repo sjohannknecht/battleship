@@ -1,4 +1,5 @@
 import shipFactory from "./ship-factory";
+import {getRandomInt} from "./util";
 
 const gameboardProto = {
     board: [[]],
@@ -93,12 +94,32 @@ const gameboardProto = {
         } else {
             this.board[y][x] = "miss";
         }
+    },
+
+    /**
+     * Places 5 ships of different lengths on the board randomly. If a ship can't be placed in a location, the inner
+     * function recursively tries again until the ship can be placed.
+     */
+    random() {
+        const shipLengths = [2, 3, 3, 4, 5];
+        function placeShipRandomly(length) {
+            const randomDirection = Math.random() < 0.5 ? "horizontal" : "vertical";
+            try {
+                this.placeShip(length, {x: getRandomInt(10), y: getRandomInt(10)}, randomDirection);
+            } catch(e) {
+                placeShipRandomly(length);
+            }
+        }
+        shipLengths.forEach((shipLength) => {
+            placeShipRandomly.call(this, shipLength);
+        })
     }
 }
 
 /**
- *
- * @returns {{placeShip(*, *, *): void, receiveAttack(*): void, _canShipBePlaced(*, *, *): boolean, board: *[][]} & {board: *[]}}
+ * Creates and returns a new gameboard. For playing the game two gameboards are needed - one for each player. The
+ * methods are defined on the prototype.
+ * @returns {{placeShip(*, *, *): void, ships: *[], receiveAttack(*): void, _canShipBePlaced(*, *, *): boolean, areAllShipsSunk(): boolean, _isLocationOutOfBounds(*): boolean, board: *[][]} & {ships: *[], board: *[]}}
  */
 export default function gameboardFactory() {
     const board = [];
