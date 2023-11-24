@@ -55,6 +55,11 @@ describe("gameboard tests", () => {
         expect(() => gameboard.receiveAttack({x: -1, y: 4})).toThrow();
     })
 
+    test("Placing a ship of length 4 on the board will make the ship accessible in the ships-array", () => {
+        gameboard.placeShip({x: 0, y: 0}, 4, "horizontal");
+        expect(gameboard.ships[0].length).toBe(4);
+    })
+
     test("Using the random method results in 5 ships being present on the board.", () => {
         gameboard.random();
         expect(gameboard.ships.length).toBe(5);

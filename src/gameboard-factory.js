@@ -46,7 +46,7 @@ const gameboardProto = {
      */
     areAllShipsSunk() {
         if (this.ships.length === 0) {
-            throw new Error("New ships were placed yet");
+            throw new Error("No ships were placed yet");
         }
         return this.ships.every((ship) => ship.isSunk());
     },
@@ -70,6 +70,7 @@ const gameboardProto = {
                     this.board[row][col] = {
                         ship: ship,
                         shipIndex: shipIndexCounter++,
+                        direction,
                     };
                 }
             }
@@ -105,9 +106,9 @@ const gameboardProto = {
         function placeShipRandomly(length) {
             const randomDirection = Math.random() < 0.5 ? "horizontal" : "vertical";
             try {
-                this.placeShip(length, {x: getRandomInt(10), y: getRandomInt(10)}, randomDirection);
+                this.placeShip({x: getRandomInt(10), y: getRandomInt(10)}, length, randomDirection);
             } catch(e) {
-                placeShipRandomly(length);
+                placeShipRandomly.call(this, length);
             }
         }
         shipLengths.forEach((shipLength) => {
