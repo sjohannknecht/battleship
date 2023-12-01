@@ -2,7 +2,7 @@ const playerProto = {
     name: "default",
     isComputer: false,
     attack(location) {
-        this.opponentsGameboard.receiveAttack(location);
+        return this.opponentsGameboard.receiveAttack(location);
     }
 };
 
@@ -17,6 +17,6 @@ export default function playerFactory(isComputer, ownGameboard, opponentsGameboa
     return Object.assign(Object.create(playerProto), {
         isComputer,
         ownGameboard,
-        opponentsGameboard
+        opponentsGameboard,
     })
 }

@@ -35,7 +35,7 @@ main {
 }
 
 
-.board-container {
+.player-container {
     flex: 1;
 }
 
@@ -56,13 +56,13 @@ main {
     }
 }
 
-.tile-button {
+.board-button {
     border: 0;
     z-index: 1;
     background-color: transparent;
 }
 
-.tile-button:hover {
+.board-button:hover {
     box-shadow: 0 0 20px 5px white;
     cursor: crosshair;
 }

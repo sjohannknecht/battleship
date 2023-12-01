@@ -1,5 +1,5 @@
-import gameboardFactory from "../src/gameboard-factory";
-import playerFactory from "../src/player-factory";
+import gameboardFactory from "../src/model/gameboard-factory";
+import playerFactory from "../src/model/player-factory";
 
 describe("player tests", () => {
     let gameboardHumanPlayer,

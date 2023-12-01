@@ -1,4 +1,4 @@
-import gameboardFactory from "../src/gameboard-factory";
+import gameboardFactory from "../src/model/gameboard-factory";
 
 describe("gameboard tests", () => {
     let gameboard;

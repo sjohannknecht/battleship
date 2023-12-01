@@ -1,5 +1,5 @@
-import gameView from "./game-view";
-import gameFactory from "./game-factory";
+import gameView from "./view/game-view";
+import gameFactory from "./model/game-factory";
 import "./index.css";
 
 

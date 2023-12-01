@@ -1,5 +1,6 @@
 import shipFactory from "./ship-factory";
-import {getRandomInt} from "./util";
+import {getRandomInt} from "../util";
+import messageBroker from "../message-broker";
 
 const gameboardProto = {
     board: [[]],
@@ -79,11 +80,16 @@ const gameboardProto = {
             throw new Error("Ship cannot be placed here.")
         }
     },
+    /**
+
+     * @param
+     */
 
     /**
      * Registers an attack at the given location of the gameboard. Either the hit-Method of the ship will be called or
      * the location is marked as 'miss'
-     * @param location An object with x and y coordinates where to hit
+     * @param  location An object with x and y coordinates where to hit
+     * @returns {boolean} True if a ship was hit, false if not.
      */
     receiveAttack(location) {
         if (this._isLocationOutOfBounds(location)) {
@@ -92,8 +98,13 @@ const gameboardProto = {
         const {x, y} = location;
         if (this.board[y][x] !== undefined && this.board[y][x] !== "miss") {
             this.board[y][x].ship.hit(this.board[y][x].shipIndex);
+            if (this.board[y][x].ship.isSunk()) {
+                messageBroker.publish("model:sunk", this.board[y][x].ship);
+            }
+            return true;
         } else {
             this.board[y][x] = "miss";
+            return false;
         }
     },
 
@@ -130,5 +141,6 @@ export default function gameboardFactory() {
     return Object.assign(Object.create(gameboardProto), {
         board: board,
         ships: [],
+        id: crypto.randomUUID(),
     });
 }

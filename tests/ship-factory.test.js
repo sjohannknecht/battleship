@@ -1,4 +1,4 @@
-import shipFactory from "../src/ship-factory";
+import shipFactory from "../src/model/ship-factory";
 
 describe("ship tests", () => {
     test("ship has correct length of 3", () => {

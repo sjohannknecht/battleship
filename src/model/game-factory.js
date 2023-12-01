@@ -1,7 +1,7 @@
 import gameboardFactory from "./gameboard-factory";
 import playerFactory from "./player-factory";
-import {getRandomInt} from "./util";
-import messageBroker from "./message-broker";
+import {getRandomInt} from "../util";
+import messageBroker from "../message-broker";
 
 const gameProto = {
     activePlayer: undefined,
@@ -13,16 +13,20 @@ const gameProto = {
     _switchActivePlayer() {
         this.activePlayer = this.activePlayer === this.players[0] ? this.players[1] : this.players[0];
     },
-    executeMove(data) {
-        const location = this.activePlayer.isComputer
+    executeAttack(location) {
+        location = this.activePlayer.isComputer
             ? {x: getRandomInt(10), y: getRandomInt(10)}
-            : {x: 0, y: 0};
-        this.activePlayer.attack(location);
+            : location;
+        const hit = this.activePlayer.attack(location);
+        const messageData = {boardId: this.activePlayer.opponentsGameboard.id, location};
+        const message = hit ? "model:hit" : "model:miss";
+        messageBroker.publish(message, messageData)
         this._switchActivePlayer();
     },
     initializeRandom() {
         this.gameboards.forEach(gameboard => gameboard.random());
-        messageBroker.publish("model-initialized", this);
+        messageBroker.subscribe("view:attack", this.executeAttack.bind(this));
+        messageBroker.publish("model:initialized", this);
         return this;
     }
 }
