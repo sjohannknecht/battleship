@@ -92,7 +92,6 @@ const gameboardProto = {
             throw new Error("Location is out of bounds of the board.")
         }
         const {x, y} = location;
-        console.log(x, y)
         if (this.board[y][x] !== undefined && this.board[y][x] !== "miss") {
             this.board[y][x].ship.hit(this.board[y][x].shipIndex);
             if (this.board[y][x].ship.isSunk()) {
