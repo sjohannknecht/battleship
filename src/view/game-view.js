@@ -30,7 +30,7 @@ export default function gameView() {
             for (let colIndex = 0; colIndex < row.length; colIndex++) {
                 const tile = board[rowIndex][colIndex];
                 if (tile && tile.ship && tile.shipIndex === 0) {
-                    placeShip(board, {x: colIndex, y: rowIndex}, tile.ship.length, tile.direction);
+                    placeShip(boards[0], {x: colIndex, y: rowIndex}, tile.ship.length, tile.direction);
                 }
             }
         })
@@ -47,7 +47,7 @@ export default function gameView() {
             ship.setAttribute("style", `grid-area: ${y + 1} / ${x + 1} / span ${length} / span 1`)
 
         }
-        boards[0].appendChild(ship);
+        board.appendChild(ship);
     }
 
     function _initializeBoard(board) {
@@ -71,6 +71,7 @@ export default function gameView() {
     }
 
     function delegateAttack(event) {
+        if (event.target.dataset.x === undefined) return;
         const location = {
             x: parseInt(event.target.dataset.x, 10),
             y: parseInt(event.target.dataset.y, 10),
@@ -103,6 +104,8 @@ export default function gameView() {
     }
 
     function renderSunk(data) {
-        const {playerId, location} = data;
+        const {boardId, ship, location, direction} = data;
+        const board = [...boards].filter((b) => b.getAttribute("id") === boardId)[0];
+        placeShip(board, location, ship.length, direction);
     }
 }

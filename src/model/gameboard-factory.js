@@ -80,10 +80,6 @@ const gameboardProto = {
             throw new Error("Ship cannot be placed here.")
         }
     },
-    /**
-
-     * @param
-     */
 
     /**
      * Registers an attack at the given location of the gameboard. Either the hit-Method of the ship will be called or
@@ -96,16 +92,30 @@ const gameboardProto = {
             throw new Error("Location is out of bounds of the board.")
         }
         const {x, y} = location;
+        console.log(x, y)
         if (this.board[y][x] !== undefined && this.board[y][x] !== "miss") {
             this.board[y][x].ship.hit(this.board[y][x].shipIndex);
             if (this.board[y][x].ship.isSunk()) {
-                messageBroker.publish("model:sunk", this.board[y][x].ship);
+                messageBroker.publish("model:sunk", {boardId: this.id, ship: this.board[y][x].ship, location: this.getShipStartLocation(this.board[y][x].ship), direction: this.board[y][x].direction});
             }
             return true;
         } else {
             this.board[y][x] = "miss";
             return false;
         }
+    },
+
+    getShipStartLocation(ship) {
+        const location = {};
+        this.board.forEach((row, rowIndex) => {
+            row.forEach((col, colIndex) => {
+                if (ship === col.ship && col.shipIndex === 0) {
+                    location.x = colIndex;
+                    location.y = rowIndex;
+                }
+            })
+        })
+        return location;
     },
 
     /**
