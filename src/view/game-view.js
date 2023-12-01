@@ -22,6 +22,7 @@ export default function gameView() {
         _initializePlayerNames(model.players);
         _renderShips(model.gameboards[0].board); // render ships only for human player
         _initializeBoard(model.gameboards[1].board); // render clickable board only for computer
+        _initializeBoards(model.gameboards);
     }
 
     function _renderShips(board) {
@@ -63,10 +64,16 @@ export default function gameView() {
         })
     }
 
+    function _initializeBoards(boardModels) {
+        boardModels.forEach((boardModel, index) => {
+            boards[index].setAttribute("id", boardModel.id)
+        })
+    }
+
     function delegateAttack(event) {
         const location = {
-            x: event.target.dataset.x,
-            y: event.target.dataset.y,
+            x: parseInt(event.target.dataset.x, 10),
+            y: parseInt(event.target.dataset.y, 10),
         }
         messageBroker.publish("view:attack", location);
     }
@@ -79,12 +86,20 @@ export default function gameView() {
 
     function renderMiss(data) {
         const {boardId, location} = data;
-        const board = boards.querySelector(`[id=${boardId}]`);
-
+        const board = [...boards].filter((b) => b.getAttribute("id") === boardId)[0];
+        const miss = document.createElement("div");
+        miss.classList.add("miss");
+        miss.setAttribute("style", `grid-area: ${location.y + 1} / ${location.x + 1}`)
+        board.appendChild(miss);
     }
 
     function renderHit(data) {
-        const {playerId, location} = data;
+        const {boardId, location} = data;
+        const board = [...boards].filter((b) => b.getAttribute("id") === boardId)[0];
+        const hit = document.createElement("div");
+        hit.classList.add("hit");
+        hit.setAttribute("style", `grid-area: ${location.y + 1} / ${location.x + 1}`);
+        board.appendChild(hit);
     }
 
     function renderSunk(data) {

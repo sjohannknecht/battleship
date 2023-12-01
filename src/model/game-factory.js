@@ -12,20 +12,42 @@ const gameProto = {
     },
     _switchActivePlayer() {
         this.activePlayer = this.activePlayer === this.players[0] ? this.players[1] : this.players[0];
+        if (this.activePlayer.isComputer) {
+            messageBroker.publish("model:attack", null);
+        }
     },
-    executeAttack(location) {
-        location = this.activePlayer.isComputer
-            ? {x: getRandomInt(10), y: getRandomInt(10)}
-            : location;
-        const hit = this.activePlayer.attack(location);
-        const messageData = {boardId: this.activePlayer.opponentsGameboard.id, location};
-        const message = hit ? "model:hit" : "model:miss";
-        messageBroker.publish(message, messageData)
-        this._switchActivePlayer();
+
+    computersTurn() {
+
     },
+
+    executeAttackPlayer(location) {
+        if (!this.activePlayer.isComputer) {
+            const hit = this.activePlayer.attack(location);
+            const messageData = {boardId: this.activePlayer.opponentsGameboard.id, location};
+            const message = hit ? "model:hit" : "model:miss";
+            messageBroker.publish(message, messageData)
+            this._switchActivePlayer();
+        }
+    },
+
+    executeAttackComputer() {
+        if (this.activePlayer.isComputer) {
+            setTimeout(() => {
+                const location = {x: getRandomInt(10), y: getRandomInt(10)}
+                const hit = this.activePlayer.attack(location);
+                const messageData = {boardId: this.activePlayer.opponentsGameboard.id, location};
+                const message = hit ? "model:hit" : "model:miss";
+                messageBroker.publish(message, messageData)
+                this._switchActivePlayer()
+            }, 1000 - getRandomInt(500))
+        }
+    },
+
     initializeRandom() {
         this.gameboards.forEach(gameboard => gameboard.random());
-        messageBroker.subscribe("view:attack", this.executeAttack.bind(this));
+        messageBroker.subscribe("view:attack", this.executeAttackPlayer.bind(this));
+        messageBroker.subscribe("model:attack", this.executeAttackComputer.bind(this));
         messageBroker.publish("model:initialized", this);
         return this;
     }
