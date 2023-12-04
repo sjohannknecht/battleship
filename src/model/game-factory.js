@@ -11,15 +11,13 @@ const gameProto = {
         this.gameStateIndex++;
     },
     _switchActivePlayer() {
-        this.activePlayer = this.activePlayer === this.players[0] ? this.players[1] : this.players[0];
-        messageBroker.publish("model:active-player", this.activePlayer);
-        if (this.activePlayer.isComputer) {
-            messageBroker.publish("model:attack", null);
+        if (this.gameStates[this.gameStateIndex] === "playing") {
+            this.activePlayer = this.activePlayer === this.players[0] ? this.players[1] : this.players[0];
+            messageBroker.publish("model:active-player", this.activePlayer);
+            if (this.activePlayer.isComputer) {
+                messageBroker.publish("model:attack", null);
+            }
         }
-    },
-
-    computersTurn() {
-
     },
 
     executeAttackPlayer(location) {
@@ -45,11 +43,22 @@ const gameProto = {
         }
     },
 
+    setGameFinished(data) {
+        const board = this.gameboards.find(board => board.id === data.boardId);
+        if (board.areAllShipsSunk()) {
+            const player = this.players.find(pl => pl.opponentsGameboard === board)
+            this._incrementGameStateIndex();
+            messageBroker.publish("model:game-finished", {player, boardId: data.boardId});
+        }
+    },
+
     initializeRandom() {
         this.gameboards.forEach(gameboard => gameboard.random());
         messageBroker.subscribe("view:attack", this.executeAttackPlayer.bind(this));
         messageBroker.subscribe("model:attack", this.executeAttackComputer.bind(this));
+        messageBroker.subscribe("model:sunk", this.setGameFinished.bind(this));
         messageBroker.publish("model:initialized", this);
+        this._incrementGameStateIndex();
         return this;
     }
 }

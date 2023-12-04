@@ -14,6 +14,7 @@ export default function gameView() {
     messageBroker.subscribe("model:hit", renderHit)
     messageBroker.subscribe("model:sunk", renderSunk)
     messageBroker.subscribe("model:active-player", renderActivePlayer)
+    messageBroker.subscribe("model:game-finished", renderGameFinished)
 
 
     // register DOM event listeners and delegate to messageBroker
@@ -88,6 +89,10 @@ export default function gameView() {
 
     function renderActivePlayer(activePlayer) {
         announcement.textContent = activePlayer.isComputer ? "It's the computers turn" : "It's your turn!";
+    }
+
+    function renderGameFinished(data) {
+        announcement.textContent = `${data.player.name} won`;
     }
 
     function renderMiss(data) {
