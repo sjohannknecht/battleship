@@ -1,4 +1,8 @@
-*, *:before, *:after {
+/* |||||||||||| General styles |||||||||||| */
+
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
@@ -16,27 +20,30 @@ body {
     font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
-header {
+
+/* |||||||||||| Sitewide |||||||||||| */
+
+.banner {
+    display: flex;
+    position: relative;
     max-width: var(--max-width);
     margin: 0 auto;
     box-shadow: 0 -10px 20px 5px grey;
-    position: relative;
-    display: flex;
 }
 
-.banner-bg {
+.banner__bg {
     display: block;
     max-width: 100%;
 }
 
-.banner-title {
+.banner__title {
     position: absolute;
     top: -10px;
     width: 100%;
 }
 
 @media (max-width: 640px) {
-    .banner-title {
+    .banner__title {
         top: 10px;
     }
 }
@@ -50,40 +57,47 @@ main {
     border-radius: 0 0 5px 5px;
 }
 
-.announcement {
-    text-align: center;
-}
 
-.game-container {
+/* |||||||||||| Game styles |||||||||||| */
+
+.game__container {
     display: flex;
-    gap: 30px;
+    gap: 10px;
 }
 
+@media (max-width: 640px) {
+    .game__container {
+        flex-direction: column;
+    }
+}
+
+.game__announcement {
+    text-align: center;
+    font-size: 2rem;
+}
 
 .player-container {
     flex: 1;
 }
 
+.player-name {
+    padding: 10px;
+}
+
 .board {
-    border: 2px solid black;
     display: grid;
     grid-template-rows: repeat(10, 1fr);
     grid-template-columns: repeat(10, 1fr);
+    border: 2px solid black;
     aspect-ratio: 1 / 1;
     background-color: var(--theme-color);
     background-image: url("assets/img/grid.svg");
     background-size: contain;
 }
 
-@media (max-width: 640px) {
-    .game-container {
-        flex-direction: column;
-    }
-}
-
 .board-button {
-    border: 0;
     z-index: 1;
+    border: 0;
     background-color: transparent;
 }
 

@@ -3,7 +3,7 @@ import messageBroker from "../message-broker";
 
 export default function gameView() {
     // cache DOM nodes
-    const announcement = document.querySelector(".announcement");
+    const announcement = document.querySelector(".game__announcement");
     const playerNames = document.querySelectorAll(".player-name");
     const boards = document.querySelectorAll(".board");
 
