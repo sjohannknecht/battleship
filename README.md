@@ -1,6 +1,8 @@
 # Battleship project
 
-This is a Website to play the game Battleship. It's written in plain HTML, CSS and Javascript.
+This is a Website to play the game Battleship. It's written in plain HTML, CSS and Javascript. The website is responsive and works for desktop and mobile.
+
+![battleship-example.png](battleship-example.png)
 
 ## Features
 
@@ -15,7 +17,19 @@ This is a Website to play the game Battleship. It's written in plain HTML, CSS a
 
 ## How to run
 
-The website can be run with npm scripts from the project root directory and uses Webpack and Webpack DevServer under the hood (see package.json for details).
+The website can be run with npm scripts from the project root directory and Webpack and Webpack DevServer are used for bundling and development (see package.json for details).
+
+### Prerequisites
+Node.js and npm (Node Package Manager) have to be installed (I used Node.js 20).
+
+For Windows or Mac visit https://nodejs.org/en and follow the instructions.
+
+For Linux you can use nvm (Node Version Manager, https://github.com/nvm-sh/nvm) to install and manage Node and npm versions.
+
+When using the project for the first time you have to run `npm install` from the project root directory to install dependencies which are defined in the package.json.
+
+### Scripts
+
 
 For development execute:
 
