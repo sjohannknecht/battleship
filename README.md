@@ -17,7 +17,7 @@ This is a Website to play the game Battleship. It's written in plain HTML, CSS a
 
 ## How to run
 
-The website can be run with npm scripts from the project root directory and Webpack and Webpack DevServer are used for bundling and development (see package.json for details).
+The website can be run with npm scripts from the project root directory. The scripts execute Webpack or Webpack DevServer for bundling and development. Jest is used for testing. See `package.json` for details.
 
 ### Prerequisites
 Node.js and npm (Node Package Manager) have to be installed (I used Node.js 20).
