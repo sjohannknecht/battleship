@@ -2,7 +2,7 @@
 
 This is a Website to play the game Battleship. It's written in plain HTML, CSS and Javascript. The website is responsive and works for desktop and mobile.
 
-![battleship-example.png](battleship-example.png)
+![Screenshot of the battleship website showcasing the gameplay](battleship-example.png)
 
 ## Features
 
