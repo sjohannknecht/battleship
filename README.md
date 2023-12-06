@@ -11,6 +11,8 @@ This is a Website to play the game Battleship. It's written in plain HTML, CSS a
 ## Planned Features
 
 - Make the computer smarter
+- Create prettier ship images
+- Add animations
 - Persistence between game sessions by using localStorage
 - Place ships with Drag&Drop before starting a game
 - Play against other players by implementing a backend
