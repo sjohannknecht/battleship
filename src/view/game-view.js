@@ -21,6 +21,7 @@ export default function gameView() {
     boards[1].addEventListener("click", delegateAttack);
 
     function initialize(model) {
+        announcement.textContent = "It's your turn!";
         _initializePlayerNames(model.players);
         _renderShips(model.gameboards[0].board); // render ships only for human player
         _initializeBoard(model.gameboards[1].board); // render clickable board only for computer

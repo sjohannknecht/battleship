@@ -50,7 +50,7 @@ The source code is separated into model and view which communicate via a message
 
 ## Tools
 
-Webpack 5 is used for processing the source code and the assets (See `webpack.config.js`). It uses Babel for transpiling the JS. The output directory is `dist`. HTMLWebpackPlugin generates `dist/index.html` based on the template in `src/index.html` and injects the bundled JS. Images are processed with Webpack 5 Asset Modules and the html-loader plugin. CSS is processed with css-loader and style-loader plugins. 
+Webpack 5 is used for processing the source code and the assets (See `webpack.config.js`). It uses Babel for transpiling the JS. The output directory is `dist`. HTMLWebpackPlugin generates `dist/index.html` based on the template in `src/index.html` and injects the bundled JS. Images are processed with Webpack 5 Asset Modules. CSS is processed with css-loader and style-loader plugins. 
 
 ## Support
 
