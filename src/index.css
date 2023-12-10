@@ -1,4 +1,4 @@
-/* |||||||||||| General styles |||||||||||| */
+/* |||||||||||||||||||||||||||||||||||| General styles |||||||||||||||||||||||||||||||||||| */
 
 *,
 *::before,
@@ -21,8 +21,21 @@ body {
     font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
+h1 {
+    padding: 30px 10px;
+}
 
-/* |||||||||||| Sitewide |||||||||||| */
+h2,
+h3,
+h4 {
+    padding: 10px;
+}
+
+p {
+    padding: 5px 10px;
+}
+
+/* |||||||||||||||||||||||||||||||||||| Sitewide |||||||||||||||||||||||||||||||||||| */
 
 .banner {
     display: flex;
@@ -58,8 +71,18 @@ main {
     border-radius: 0 0 5px 5px;
 }
 
+.footer {
+    padding: 20px;
+    text-align: center;
+}
 
-/* |||||||||||| Game styles |||||||||||| */
+.footer a {
+    font-size: 1.2rem;
+    color: white;
+    text-shadow: black 0 0 10px;
+}
+
+/* |||||||||||||||||||||||||||||||||||| Game styles |||||||||||||||||||||||||||||||||||| */
 
 .game__container {
     display: flex;
@@ -123,3 +146,19 @@ main {
     background-size: 100% 100%;
     background-image: url("assets/img/hit.svg");
 }
+
+
+/* |||||||||||||||||||||||||||||||||||| Data Privacy styles |||||||||||||||||||||||||||||||||||| */
+
+.text-container {
+    max-width: 700px;
+    margin: auto;
+}
+
+.text-container
+
+.server__list {
+    list-style-position: inside;
+    padding: 10px;
+}
+
