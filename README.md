@@ -1,12 +1,13 @@
 # Battleship project
 
-This is a Website to play the game Battleship. It's written in plain HTML, CSS and Javascript. The website is responsive and works for desktop and mobile.
+This is a Website to play the game Battleship. It's written in plain HTML, CSS and Javascript
 
 ![Screenshot of the battleship website showcasing the gameplay](battleship-example.png)
 
 ## Features
 
 - Play Battleship against the computer
+- Responsive for desktop and mobile
 
 ## Planned Features
 
@@ -54,7 +55,7 @@ Webpack 5 is used for processing the source code and the assets (See `webpack.co
 
 ## Support
 
-If you are having issues, please let me know via the contacts on my website.
+If you are having issues, please let me know via the contacts on [my website](https://sjohannknecht.de).
 
 ## License
 
