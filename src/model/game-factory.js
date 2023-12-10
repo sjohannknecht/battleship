@@ -14,6 +14,7 @@ const gameProto = {
         if (this.gameStates[this.gameStateIndex] === "playing") {
             this.activePlayer = this.activePlayer === this.players[0] ? this.players[1] : this.players[0];
             messageBroker.publish("model:active-player", this.activePlayer);
+            messageBroker.publish("model:next-turn", null);
             if (this.activePlayer.isComputer) {
                 messageBroker.publish("model:attack", null);
             }

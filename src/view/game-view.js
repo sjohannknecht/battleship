@@ -14,6 +14,7 @@ export default function gameView() {
     messageBroker.subscribe("model:hit", renderHit)
     messageBroker.subscribe("model:sunk", renderSunk)
     messageBroker.subscribe("model:active-player", renderActivePlayer)
+    messageBroker.subscribe("model:next-turn", renderCursorWaiting)
     messageBroker.subscribe("model:game-finished", renderGameFinished)
 
 
@@ -33,13 +34,13 @@ export default function gameView() {
             for (let colIndex = 0; colIndex < row.length; colIndex++) {
                 const tile = board[rowIndex][colIndex];
                 if (tile && tile.ship && tile.shipIndex === 0) {
-                    placeShip(boards[0], {x: colIndex, y: rowIndex}, tile.ship.length, tile.direction);
+                    _placeShip(boards[0], {x: colIndex, y: rowIndex}, tile.ship.length, tile.direction);
                 }
             }
         })
     }
 
-    function placeShip(board, startLocation, length, direction) {
+    function _placeShip(board, startLocation, length, direction) {
         const {x, y} = startLocation;
         const ship = document.createElement("div");
         ship.classList.add("ship")
@@ -96,6 +97,10 @@ export default function gameView() {
         announcement.textContent = `${data.player.name} won`;
     }
 
+    function renderCursorWaiting() {
+        boards[1].querySelector(".board-overlay").classList.toggle("board-overlay--active");
+    }
+
     function renderMiss(data) {
         const {boardId, location} = data;
         const board = [...boards].filter((b) => b.getAttribute("id") === boardId)[0];
@@ -117,6 +122,6 @@ export default function gameView() {
     function renderSunk(data) {
         const {boardId, ship, location, direction} = data;
         const board = [...boards].filter((b) => b.getAttribute("id") === boardId)[0];
-        placeShip(board, location, ship.length, direction);
+        _placeShip(board, location, ship.length, direction);
     }
 }
