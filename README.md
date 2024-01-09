@@ -23,6 +23,7 @@ This is a Website to play the game Battleship. It's written in plain HTML, CSS a
 The website can be run with npm scripts from the project root directory. The scripts execute Webpack or Webpack DevServer for bundling and development. Jest is used for testing. See `package.json` for details.
 
 ### Prerequisites
+
 Node.js and npm (Node Package Manager) have to be installed (I used Node.js 20).
 
 For Windows or Mac visit https://nodejs.org/en and follow the instructions.
@@ -32,7 +33,6 @@ For Linux you can use nvm (Node Version Manager, https://github.com/nvm-sh/nvm) 
 When using the project for the first time you have to run `npm install` from the project root directory to install dependencies which are defined in the package.json.
 
 ### Scripts
-
 
 For development execute:
 
@@ -47,11 +47,12 @@ Tests are written with Jest and can be run with:
     npm run test
 
 ## Code
-The source code is separated into model and view which communicate via a message broker as a mediator (Publish-Subscribe pattern).  `index.js` is the entrypoint where view and model get initialized. The message broker in `message-broker.js` is directly imported into the view and model modules as a global singleton.
+
+The source code is separated into model and view which communicate via a message broker as a mediator (Publish-Subscribe pattern). `index.js` is the entrypoint where view and model get initialized. The message broker in `message-broker.js` is directly imported into the view and model modules as a global singleton.
 
 ## Tools
 
-Webpack 5 is used for processing the source code and the assets (See `webpack.config.js`). It uses Babel for transpiling the JS. The output directory is `dist`. HTMLWebpackPlugin generates `dist/index.html` based on the template in `src/index.html` and injects the bundled JS. Images are processed with Webpack 5 Asset Modules. CSS is processed with css-loader and style-loader plugins. 
+Webpack 5 is used for processing the source code and the assets (See `webpack.config.js`). It uses Babel for transpiling the JS. The output directory is `dist`. HTMLWebpackPlugin generates `dist/index.html` based on the template in `src/index.html` and injects the bundled JS. Images are processed with Webpack 5 Asset Modules. CSS is processed with css-loader and style-loader plugins.
 
 ## Support
 

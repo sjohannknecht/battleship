@@ -4,26 +4,26 @@
  */
 
 const messageBroker = (function () {
-    const messages = {};
+  const messages = {};
 
-    return {
-        subscribe(message, fn) {
-            if (!messages[message]) {
-                messages[message] = [];
-            }
-            messages[message].push(fn);
-        },
-        unsubscribe(message, fn) {
-            if (messages[message]) {
-                messages[message] = messages[message].filter(func => func !== fn);
-            }
-        },
-        publish(message, data) {
-            if (messages[message]) {
-                messages[message].forEach(fn => fn(data));
-            }
-        }
-    }
+  return {
+    subscribe(message, fn) {
+      if (!messages[message]) {
+        messages[message] = [];
+      }
+      messages[message].push(fn);
+    },
+    unsubscribe(message, fn) {
+      if (messages[message]) {
+        messages[message] = messages[message].filter((func) => func !== fn);
+      }
+    },
+    publish(message, data) {
+      if (messages[message]) {
+        messages[message].forEach((fn) => fn(data));
+      }
+    },
+  };
 })();
 
 export default messageBroker;

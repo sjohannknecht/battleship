@@ -3,178 +3,177 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 :root {
-    --max-width: 1200px;
-    --color-primary: dodgerblue;
-    --color-shadow: grey;
+  --max-width: 1200px;
+  --color-primary: dodgerblue;
+  --color-shadow: grey;
 }
 
 body {
-    min-height: 100svh;
-    background-color: var(--color-primary);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80' width='80' height='80'%3E%3Cpath fill='%23ffffff' fill-opacity='0.55' d='M14 16H9v-2h5V9.87a4 4 0 1 1 2 0V14h5v2h-5v15.95A10 10 0 0 0 23.66 27l-3.46-2 8.2-2.2-2.9 5a12 12 0 0 1-21 0l-2.89-5 8.2 2.2-3.47 2A10 10 0 0 0 14 31.95V16zm40 40h-5v-2h5v-4.13a4 4 0 1 1 2 0V54h5v2h-5v15.95A10 10 0 0 0 63.66 67l-3.47-2 8.2-2.2-2.88 5a12 12 0 0 1-21.02 0l-2.88-5 8.2 2.2-3.47 2A10 10 0 0 0 54 71.95V56zm-39 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm40-40a2 2 0 1 1 0-4 2 2 0 0 1 0 4zM15 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm40 40a2 2 0 1 0 0-4 2 2 0 0 0 0 4z'%3E%3C/path%3E%3C/svg%3E");
-    font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  min-height: 100svh;
+  background-color: var(--color-primary);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80' width='80' height='80'%3E%3Cpath fill='%23ffffff' fill-opacity='0.55' d='M14 16H9v-2h5V9.87a4 4 0 1 1 2 0V14h5v2h-5v15.95A10 10 0 0 0 23.66 27l-3.46-2 8.2-2.2-2.9 5a12 12 0 0 1-21 0l-2.89-5 8.2 2.2-3.47 2A10 10 0 0 0 14 31.95V16zm40 40h-5v-2h5v-4.13a4 4 0 1 1 2 0V54h5v2h-5v15.95A10 10 0 0 0 63.66 67l-3.47-2 8.2-2.2-2.88 5a12 12 0 0 1-21.02 0l-2.88-5 8.2 2.2-3.47 2A10 10 0 0 0 54 71.95V56zm-39 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm40-40a2 2 0 1 1 0-4 2 2 0 0 1 0 4zM15 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm40 40a2 2 0 1 0 0-4 2 2 0 0 0 0 4z'%3E%3C/path%3E%3C/svg%3E");
+  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 h1 {
-    padding: 30px 10px;
+  padding: 30px 10px;
 }
 
 h2,
 h3,
 h4 {
-    padding: 10px;
+  padding: 10px;
 }
 
 p {
-    padding: 5px 10px;
+  padding: 5px 10px;
 }
 
 /* |||||||||||||||||||||||||||||||||||| Sitewide |||||||||||||||||||||||||||||||||||| */
 
 .banner {
-    display: flex;
-    position: relative;
-    max-width: var(--max-width);
-    margin: 0 auto;
-    box-shadow: 0 -10px 20px 5px var(--color-shadow);
+  display: flex;
+  position: relative;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  box-shadow: 0 -10px 20px 5px var(--color-shadow);
 }
 
 .banner__bg {
-    display: block;
-    max-width: 100%;
+  display: block;
+  max-width: 100%;
 }
 
 .banner__title {
-    position: absolute;
-    top: -10px;
-    width: 100%;
+  position: absolute;
+  top: -10px;
+  width: 100%;
 }
 
 @media (max-width: 640px) {
-    .banner__title {
-        top: 10px;
-    }
+  .banner__title {
+    top: 10px;
+  }
 }
 
 main {
-    padding: 10px;
-    background-color: white;
-    margin: auto;
-    max-width: var(--max-width);
-    box-shadow: 0 0 20px 5px var(--color-shadow);
-    border-radius: 0 0 5px 5px;
+  padding: 10px;
+  background-color: white;
+  margin: auto;
+  max-width: var(--max-width);
+  box-shadow: 0 0 20px 5px var(--color-shadow);
+  border-radius: 0 0 5px 5px;
 }
 
 .footer {
-    padding: 20px;
-    text-align: center;
+  padding: 20px;
+  text-align: center;
 }
 
 .footer a {
-    font-size: 1.2rem;
-    color: white;
-    text-shadow: black 0 0 10px;
+  font-size: 1.2rem;
+  color: white;
+  text-shadow: black 0 0 10px;
 }
 
 /* |||||||||||||||||||||||||||||||||||| Game styles |||||||||||||||||||||||||||||||||||| */
 
 .game__container {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 @media (max-width: 640px) {
-    .game__container {
-        flex-direction: column;
-    }
+  .game__container {
+    flex-direction: column;
+  }
 }
 
 .game__announcement {
-    text-align: center;
-    font-size: 2rem;
+  text-align: center;
+  font-size: 2rem;
 }
 
 .player-container {
-    flex: 1;
+  flex: 1;
 }
 
 .player-name {
-    padding: 10px;
+  padding: 10px;
 }
 
 .board {
-    display: grid;
-    grid-template-rows: repeat(10, 1fr);
-    grid-template-columns: repeat(10, 1fr);
-    aspect-ratio: 1 / 1;
-    background-color: var(--color-primary);
-    background-image: url("assets/img/grid.svg");
-    background-size: contain;
+  display: grid;
+  grid-template-rows: repeat(10, 1fr);
+  grid-template-columns: repeat(10, 1fr);
+  aspect-ratio: 1 / 1;
+  background-color: var(--color-primary);
+  background-image: url("assets/img/grid.svg");
+  background-size: contain;
 }
 
 .board-button {
-    z-index: 1;
-    border: 0;
-    background-color: transparent;
+  z-index: 1;
+  border: 0;
+  background-color: transparent;
 }
 
 .board-button:hover {
-    box-shadow: 0 0 20px 5px white;
-    cursor: crosshair;
+  box-shadow: 0 0 20px 5px white;
+  cursor: crosshair;
 }
 
 .ship {
-    position: relative;
+  position: relative;
 }
 
 .ship__img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    width: 100%;
-    height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
 }
 
 .miss {
-    z-index: 3;
-    background-size: 100% 100%;
-    background-image: url("assets/img/miss.svg");
+  z-index: 3;
+  background-size: 100% 100%;
+  background-image: url("assets/img/miss.svg");
 }
 
 .hit {
-    z-index: 3;
-    background-size: 100% 100%;
-    background-image: url("assets/img/hit.svg");
+  z-index: 3;
+  background-size: 100% 100%;
+  background-image: url("assets/img/hit.svg");
 }
 
-
 .board-overlay {
-    display: none;
-    grid-area: 1 / 1 / -1 / -1;
+  display: none;
+  grid-area: 1 / 1 / -1 / -1;
 }
 
 .board-overlay--active {
-    display: block;
-    cursor: wait;
-    z-index: 4;
+  display: block;
+  cursor: wait;
+  z-index: 4;
 }
 
 /* |||||||||||||||||||||||||||||||||||| Data Privacy styles |||||||||||||||||||||||||||||||||||| */
 
 .text-container {
-    max-width: 700px;
-    margin: auto;
+  max-width: 700px;
+  margin: auto;
 }
 
 .server__list {
-    list-style-position: inside;
-    padding: 10px;
+  list-style-position: inside;
+  padding: 10px;
 }
-

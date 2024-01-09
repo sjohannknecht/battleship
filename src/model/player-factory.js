@@ -1,9 +1,9 @@
 const playerProto = {
-    name: "default",
-    isComputer: false,
-    attack(location) {
-        return this.opponentsGameboard.receiveAttack(location);
-    }
+  name: "default",
+  isComputer: false,
+  attack(location) {
+    return this.opponentsGameboard.receiveAttack(location);
+  },
 };
 
 /**
@@ -13,10 +13,14 @@ const playerProto = {
  * @param opponentsGameboard The gameboard of the opponent.
  * @returns {{isComputer: boolean, attack(*): void, name: string} & {opponentsGameboard, isComputer, ownGameboard}}
  */
-export default function playerFactory(isComputer, ownGameboard, opponentsGameboard) {
-    return Object.assign(Object.create(playerProto), {
-        isComputer,
-        ownGameboard,
-        opponentsGameboard,
-    })
+export default function playerFactory(
+  isComputer,
+  ownGameboard,
+  opponentsGameboard,
+) {
+  return Object.assign(Object.create(playerProto), {
+    isComputer,
+    ownGameboard,
+    opponentsGameboard,
+  });
 }

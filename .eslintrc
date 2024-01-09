@@ -1,0 +1,15 @@
+{
+  "extends": ["prettier", "eslint:recommended"],
+  "plugins": ["prettier", "jest"],
+  "rules": {
+    "prettier/prettier": ["error"]
+  },
+  "ignorePatterns": ["dist", "node_modules"],
+  "parser": "@babel/eslint-parser",
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest/globals": true,
+    "node": true
+  }
+}
