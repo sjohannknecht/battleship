@@ -177,3 +177,7 @@ main {
   list-style-position: inside;
   padding: 10px;
 }
+
+.privacy__link {
+  word-break: break-all;
+}
