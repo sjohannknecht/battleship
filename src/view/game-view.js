@@ -1,4 +1,5 @@
 import messageBroker from "../message-broker";
+import ShipIMG from "../assets/img/circle.png";
 
 
 export default function gameView() {
@@ -45,12 +46,15 @@ export default function gameView() {
         const ship = document.createElement("div");
         ship.classList.add("ship")
         if (direction === "horizontal") {
-            ship.classList.add("horizontal");
             ship.setAttribute("style", `grid-area: ${y + 1} / ${x + 1} / span 1 / span ${length}`)
         } else {
             ship.setAttribute("style", `grid-area: ${y + 1} / ${x + 1} / span ${length} / span 1`)
-
         }
+        const shipImg = document.createElement("img");
+        shipImg.setAttribute("alt", "Ship Icon");
+        shipImg.setAttribute("src", ShipIMG);
+        shipImg.classList.add("ship__img");
+        ship.appendChild(shipImg);
         board.appendChild(ship);
     }
 

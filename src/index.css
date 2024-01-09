@@ -130,9 +130,16 @@ main {
 }
 
 .ship {
+    position: relative;
+}
+
+.ship__img {
+    position: absolute;
+    top: 0;
+    left: 0;
     z-index: 2;
-    background-size: 100% 100%;
-    background-image: url("assets/img/circle.svg");
+    width: 100%;
+    height: 100%;
 }
 
 .miss {
