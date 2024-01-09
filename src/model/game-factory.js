@@ -40,7 +40,7 @@ const gameProto = {
                 const message = hit ? "model:hit" : "model:miss";
                 messageBroker.publish(message, messageData)
                 this._switchActivePlayer()
-            }, 1000 - getRandomInt(500))
+            }, 600 - getRandomInt(300))
         }
     },
 
